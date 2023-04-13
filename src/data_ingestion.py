@@ -22,20 +22,7 @@ def data_ingestion(table_name, url, file_path, user, password, host, port, db):
     
     # Write your code here
     
-    engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db}')
     
-    df_taxi = pd.read_parquet(f'{file_path}')
-    df_taxi.head(n=0).to_sql(name='yellow_taxi', con=engine, if_exists='replace')
-    
-    parquet_file = pq.ParquetFile(f'{file_path}')
-    for batch in parquet_file.iter_batches(batch_size=100000):
-        start_time = time()
-        batch_df = batch.to_pandas()
-        batch_df.to_sql(f'{table_name}', engine, if_exists='append', index=False)
-        end_time = time()
-        print('Batch time: ', end_time - start_time)
-    else:
-        print('Finished writing to database!')
     
 if __name__ == '__main__':
     data_ingestion()
