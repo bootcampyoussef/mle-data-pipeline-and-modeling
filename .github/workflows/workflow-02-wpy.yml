@@ -1,4 +1,4 @@
-name: Test in different OS
+name: Test in different OS with python script
 
 # === Events ===
 on:
@@ -45,25 +45,29 @@ jobs:
       - name: Create import_libraries_test.py from Notebooks
         run: |
           echo "$LOG_NOTEBOOK Scanning notebooks for imports..."
-          chmod +x .github/workflows/REGX_test_import_libraries.sh
-          ./.github/workflows/REGX_test_import_libraries.sh
+          chmod +x .github/workflows/REGX_test_import_libraries_w_python.sh
+          ./.github/workflows/REGX_test_import_libraries_w_python.sh
           echo "$LOG_NOTEBOOK Notebook import list generated."
 
       - name: Install dependencies
         run: |
           echo "$LOG_SETUP Python + venv setup (Linux/macOS style)"
-          python --version
+          set -euo pipefail
+          REQ=$(find . -type f -name requirements.txt -not -path '*/.venv/*' -print -quit)
+          if [ -z "$REQ" ]; then
+            echo "No requirements.txt found. Skipping."
+            exit 0
+          fi
+          echo "Using $REQ"
           python -m venv .venv
-          source .venv/bin/activate
-          python -m pip install --upgrade pip
-          pip list
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          ./.venv/bin/python -m pip install --upgrade pip
+          ./.venv/bin/python -m pip install -r "$REQ"
           echo "$LOG_SETUP Dependencies installed."
 
       - name: Test the import libraries
         run: |
           source .venv/bin/activate
-          ./.github/workflows/REGX_test_import_libraries.sh
+          ./.github/workflows/REGX_test_import_libraries_w_python.sh
           echo "$LOG_TEST Running pytest on Ubuntu..."
           python -m pip install pytest
           pytest ./.github/workflows/testing/test_import_libraries.py -q
@@ -83,6 +87,9 @@ jobs:
       matrix:
         os: [ windows-2022, windows-2025 ]
         python-version: ["3.11.3","3.12","3.13"]
+    env:                       # <─── Add this block
+      PYTHONUTF8: "1"
+      PYTHONIOENCODING: "utf-8"
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -97,27 +104,32 @@ jobs:
       - name: Create import_libraries_test.py from Notebooks
         run: |
           echo "$LOG_NOTEBOOK Scanning notebooks for imports..."
-          chmod +x .github/workflows/REGX_test_import_libraries.sh
-          ./.github/workflows/REGX_test_import_libraries.sh
+          chmod +x .github/workflows/REGX_test_import_libraries_w_python.sh
+          ./.github/workflows/REGX_test_import_libraries_w_python.sh
           echo "$LOG_NOTEBOOK Notebook import list generated."
-
+        
       - name: Install dependencies
+        shell: pwsh
         run: |
-          echo "$LOG_SETUP Python + venv setup (Windows + Git Bash style)"
-          echo "Note: Commands run under Bash (not PowerShell)."
-          python --version
+          echo "$LOG_SETUP Python + venv setup (Windows style)"
+          $req = Get-ChildItem -Recurse -Filter requirements.txt -File `
+          | Where-Object { $_.FullName -notmatch '\\\.venv\\' } `
+          | Select-Object -First 1
+          if (-not $req) {
+          Write-Host "No requirements.txt found. Skipping."
+           exit 0
+          }
+          Write-Host "Using $($req.FullName)"
           python -m venv .venv
-          source .venv/Scripts/activate
-          python -m pip install --upgrade pip
-          pip list
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          .\.venv\Scripts\python -m pip install --upgrade pip
+          .\.venv\Scripts\python -m pip install -r "$($req.FullName)"
           echo "$LOG_SETUP Dependencies installed."
 
       - name: Test the import libraries
         run: |
           echo "Note: Commands run under Bash (not PowerShell)."
           source .venv/Scripts/activate
-          ./.github/workflows/REGX_test_import_libraries.sh
+          ./.github/workflows/REGX_test_import_libraries_w_python.sh
           echo "$LOG_TEST Running pytest on Windows..."
           python -m pip install pytest
           pytest ./.github/workflows/testing/test_import_libraries.py -q
@@ -160,24 +172,29 @@ jobs:
       - name: Create import_libraries_test.py from Notebooks
         run: |
           echo "$LOG_NOTEBOOK Scanning notebooks for imports..."
-          chmod +x .github/workflows/REGX_test_import_libraries.sh
-          ./.github/workflows/REGX_test_import_libraries.sh
+          chmod +x .github/workflows/REGX_test_import_libraries_w_python.sh
+          ./.github/workflows/REGX_test_import_libraries_w_python.sh
           echo "$LOG_NOTEBOOK Notebook import list generated."
 
       - name: Install dependencies
         run: |
           echo "$LOG_SETUP Python + venv setup (Linux/macOS style)"
+          set -euo pipefail
+          REQ=$(find . -type f -name requirements.txt -not -path '*/.venv/*' -print -quit)
+          if [ -z "$REQ" ]; then
+            echo "No requirements.txt found. Skipping."
+            exit 0
+          fi
+          echo "Using $REQ"
           python -m venv .venv
-          source .venv/bin/activate
-          python -m pip install --upgrade pip
-          pip list
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          ./.venv/bin/python -m pip install --upgrade pip
+          ./.venv/bin/python -m pip install -r "$REQ"
           echo "$LOG_SETUP Dependencies installed."
 
       - name: Test the import libraries
         run: |
           source .venv/bin/activate
-          ./.github/workflows/REGX_test_import_libraries.sh
+          ./.github/workflows/REGX_test_import_libraries_w_python.sh
           echo "$LOG_TEST Running pytest on macOS (Intel)..."
           python -m pip install pytest
           pytest ./.github/workflows/testing/test_import_libraries.py -q
@@ -220,24 +237,29 @@ jobs:
       - name: Create import_libraries_test.py from Notebooks
         run: |
           echo "$LOG_NOTEBOOK Scanning notebooks for imports..."
-          chmod +x .github/workflows/REGX_test_import_libraries.sh
-          ./.github/workflows/REGX_test_import_libraries.sh 
+          chmod +x .github/workflows/REGX_test_import_libraries_w_python.sh
+          ./.github/workflows/REGX_test_import_libraries_w_python.sh
           echo "$LOG_NOTEBOOK Notebook import list generated."
 
       - name: Install dependencies
         run: |
           echo "$LOG_SETUP Python + venv setup (Linux/macOS style)"
+          set -euo pipefail
+          REQ=$(find . -type f -name requirements.txt -not -path '*/.venv/*' -print -quit)
+          if [ -z "$REQ" ]; then
+            echo "No requirements.txt found. Skipping."
+            exit 0
+          fi
+          echo "Using $REQ"
           python -m venv .venv
-          source .venv/bin/activate
-          python -m pip install --upgrade pip
-          pip list
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          ./.venv/bin/python -m pip install --upgrade pip
+          ./.venv/bin/python -m pip install -r "$REQ"
           echo "$LOG_SETUP Dependencies installed."
 
       - name: Test the import libraries
         run: |
           source .venv/bin/activate
-          ./.github/workflows/REGX_test_import_libraries.sh
+          ./.github/workflows/REGX_test_import_libraries_w_python.sh
           echo "$LOG_TEST Running pytest on macOS (Apple Silicon)..."
           python -m pip install pytest
           pytest ./.github/workflows/testing/test_import_libraries.py -q
