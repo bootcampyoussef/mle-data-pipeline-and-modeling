@@ -12,20 +12,50 @@ Afterwards you will learn about Data modeling and how to create a star schema fo
 
 ### Requirements
 
-You will need Docker and Docker Compose installed on your machine. If you don't have them installed, please follow the instructions on the official website: [https://docs.docker.com/desktop/install/mac-install/](https://docs.docker.com/desktop/install/mac-install/)
+You will need **Docker** and **Docker Compose** installed on your machine. If you don't have them installed, please follow the instructions on the official website:
+- [Mac](https://docs.docker.com/desktop/install/mac-install/)
+- [Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
 
-Also you will need DBeaver installed on your machine. If you don't have it installed, please follow the instructions on the official website: [https://dbeaver.io/download/](https://dbeaver.io/download/) or you can use:
+Also you will need **DBeaver** installed on your machine. If you don't have it installed, please follow the instructions on the [official website](https://dbeaver.io/download/) or you can use:
 
+#### **`macOS`**
 ```bash
 brew install --cask dbeaver-community
 ```
 
+#### **`WindowsOS`**
+```PowerShell
+choco install dbeaver
+```
+
 ### Environment 
 
+#### **`macOS`**
 ```bash
 pyenv local 3.11.3
 python -m venv .venv
 source .venv/bin/activate
 pip install -U pip
 pip install -r requirements-dev.txt
+```
+
+#### **`WindowsOS`**
+ For `PowerShell` CLI :
+
+```PowerShell
+pyenv local 3.11.3
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements-dev.txt
+```
+
+For `Git-Bash` CLI :
+
+```bash
+pyenv local 3.11.3
+python -m venv .venv
+source .venv/Scripts/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements-dev.txt
 ```
