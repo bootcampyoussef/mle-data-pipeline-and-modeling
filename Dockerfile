@@ -1,5 +1,5 @@
 # Use the official PostgreSQL image as the base image
-FROM postgres:13.2
+FROM postgres:17
 
 # Set the working directory
 WORKDIR /app
