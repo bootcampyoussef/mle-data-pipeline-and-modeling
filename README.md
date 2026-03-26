@@ -1,53 +1,104 @@
-# Data pipeline and Data modeling
+# Data pipeline and data modeling
 
-In this repository you will build a simple ETL pipeline using Python and SQL. The pipeline will download data, extract data from files, process them using Python, and load the data into a Database. Also you will explore the dataset with SQL in your created Database.
-Afterwards you will learn about Data modeling and how to create a star schema for your data. You will also learn how to create a star schema using Python.
+This repository is a small hands-on course in three steps:
 
-
-1. [Setup the Database](./01-setup-your-db.md)
+1. [Setup the database](./01-setup-your-db.md)
 2. [ETL pipeline](./02-load-data.ipynb)
 3. [Data modeling](./03-data-modeling.ipynb)
 
+By the end, you will have:
+
+- a local PostgreSQL database running in Docker
+- the January 2025 NYC yellow taxi dataset loaded into PostgreSQL
+- a simple star schema built on top of that raw table
+- practice writing analytical SQL against both the raw and modeled data
+
+## Course map
+
+### Step 1: Setup the database
+
+In [01-setup-your-db.md](./01-setup-your-db.md), you will start PostgreSQL in Docker and verify that you can connect to it.
+
+You are done with step 1 when:
+
+- the `ny-taxi-db` container is running
+- PostgreSQL is reachable on `localhost:5432`
+- you can connect to the `ny_taxi` database with `psql`
+
+### Step 2: Build the ETL pipeline
+
+In [02-load-data.ipynb](./02-load-data.ipynb), you will download the yellow taxi parquet file, inspect it with pandas, and load it into PostgreSQL in chunks.
+
+You are done with step 2 when:
+
+- the `yellow_taxi` table exists in `ny_taxi`
+- the notebook validation confirms the PostgreSQL row count matches the parquet row count
+- the CLI and Dockerized ingestion flow both make sense from the notebook walkthrough
+
+### Step 3: Model the data for analytics
+
+In [03-data-modeling.ipynb](./03-data-modeling.ipynb), you will turn the raw `yellow_taxi` table into a small star schema for analytical queries.
+
+You are done with step 3 when:
+
+- the dimension tables and `fact_trip` exist in PostgreSQL
+- `fact_trip` has the same number of rows as `yellow_taxi`
+- you can answer the notebook exercises with the modeled tables
+
 ## Setup
+
+## Mermaid Diagrams
+
+This repo contains Mermaid graphs in the Markdown lessons and notebook content. If you want them to render in VS Code:
+
+- [Install in VS Code](vscode:extension/bierner.markdown-mermaid)
+- [View on Marketplace](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid)
 
 ### Requirements
 
-You will need **Docker** and **Docker Compose** installed on your machine. If you don't have them installed, please follow the instructions on the official website:
+You will need **Docker Desktop** installed and running on your machine. Docker Compose is not required for this project. If you do not have Docker Desktop installed yet, follow the instructions on the official website:
+
 - [Mac](https://docs.docker.com/desktop/install/mac-install/)
 - [Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
 
-Also you will need **DBeaver** installed on your machine. If you don't have it installed, please follow the instructions on the [official website](https://dbeaver.io/download/) or you can use:
+**DBeaver** is optional, but recommended if you want a GUI for exploring the database. If you do not have it installed, follow the instructions on the [official website](https://dbeaver.io/download/) or use:
 
 #### **`macOS`**
+
 ```bash
 brew install --cask dbeaver-community
 ```
 
-#### **`WindowsOS`**
+#### **`Windows`**
+
 ```PowerShell
 choco install dbeaver
 ```
 
-### Environment 
+### Environment
+
+Create a local virtual environment before opening the notebooks.
 
 #### **`macOS`**
+
 ```bash
 pyenv local 3.11.3
 python -m venv .venv
 source .venv/bin/activate
 pip install -U pip
-pip install -r requirements-dev.txt
+pip install -r requirements.txt
 ```
 
-#### **`WindowsOS`**
- For `PowerShell` CLI :
+#### **`Windows`**
+
+For `PowerShell` CLI :
 
 ```PowerShell
 pyenv local 3.11.3
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-python -m pip install -r requirements-dev.txt
+python -m pip install -r requirements.txt
 ```
 
 For `Git-Bash` CLI :
@@ -57,5 +108,5 @@ pyenv local 3.11.3
 python -m venv .venv
 source .venv/Scripts/activate
 python -m pip install --upgrade pip
-python -m pip install -r requirements-dev.txt
+python -m pip install -r requirements.txt
 ```
