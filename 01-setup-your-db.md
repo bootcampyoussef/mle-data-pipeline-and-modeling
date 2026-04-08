@@ -1,4 +1,4 @@
-# Setup your database
+# Setup Your Database
 
 This step starts a local PostgreSQL database in Docker for the rest of the project. After it is running:
 
@@ -122,17 +122,13 @@ docker exec -it ny-taxi-db psql -U postgres -d ny_taxi
 
 This opens the `psql` command-line client inside the running container and connects to the `ny_taxi` database.
 
-Useful `psql` commands:
+### Useful `psql` commands
 
-```sql
-\l
-\c ny_taxi
-\dt
-```
-
-- `\l` lists all databases
-- `\c ny_taxi` reconnects to the `ny_taxi` database if needed
-- `\dt` lists tables in the current database
+| Command | Description |
+| --- | --- |
+| `\l` | List all databases |
+| `\c ny_taxi` | Reconnect to the `ny_taxi` database if needed |
+| `\dt` | List tables in the current database |
 
 At this point, `\dt` may be empty, which is expected. The tables are created later when you load data.
 

@@ -62,14 +62,14 @@ def load_parquet_to_postgres(
 
 
 @click.command()
-@click.option("--user", default="postgres", help="Postgres user name")
-@click.option("--password", default="postgres", help="Postgres password")
-@click.option("--host", default="localhost", help="Postgres host name")
-@click.option("--port", default=5432, help="Postgres port number")
-@click.option("--table_name", default="yellow_taxi", help="Table name to write to")
-@click.option("--url", help="URL to download parquet file from")
-@click.option("--file_path", help="Path to save parquet file to")
-@click.option("--db", default="ny_taxi", help="Database name to write to")
+@click.option("--user", default="postgres", help="Postgres user name.")
+@click.option("--password", default="postgres", help="Postgres password.")
+@click.option("--host", default="localhost", help="Postgres host name.")
+@click.option("--port", default=5432, help="Postgres port number.")
+@click.option("--table_name", default="yellow_taxi", help="Table name to write to.")
+@click.option("--url", help="URL to download parquet file from.")
+@click.option("--file_path", help="Path to save parquet file to.")
+@click.option("--db", default="ny_taxi", help="Database name to write to.")
 def data_ingestion(table_name, url, file_path, user, password, host, port, db):
     """Download a parquet file and load it into PostgreSQL in chunks."""
 
