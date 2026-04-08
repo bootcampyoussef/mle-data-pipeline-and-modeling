@@ -96,17 +96,17 @@ The [requirements.txt](requirements.txt) file contains all libraries and depende
 
 - **DBeaver** is optional, but recommended if you want a GUI for exploring the database. If you do not have it installed, please follow the installation instructions [**here**](https://dbeaver.io/download/), or use:
 
-    ### **`macOS`**
+### **`macOS`**
 
-    ```bash
-    brew install --cask dbeaver-community
-    ```
+```bash
+brew install --cask dbeaver-community
+```
 
-    ### **`Windows`**
+### **`Windows`**
 
-    ```PowerShell
-    choco install dbeaver
-    ```
+```PowerShell
+choco install dbeaver
+```
 
 ## Learning Objectives
 
