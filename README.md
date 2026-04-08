@@ -1,4 +1,4 @@
-# Data pipeline and data modeling
+# Data Pipeline and Data Modeling
 
 This repository is a small hands-on course in three steps:
 
@@ -10,10 +10,10 @@ By the end, you will have:
 
 - a local PostgreSQL database running in Docker
 - the January 2025 NYC yellow taxi dataset loaded into PostgreSQL
-- a simple star schema built on top of that raw table
+- a simple star schema built on top of the raw table
 - practice writing analytical SQL against both the raw and modeled data
 
-## Course map
+## Course Map
 
 ### Step 1: Setup the database
 
@@ -45,8 +45,6 @@ You are done with step 3 when:
 - `fact_trip` has the same number of rows as `yellow_taxi`
 - you can answer the notebook exercises with the modeled tables
 
-## Setup
-
 ## Mermaid Diagrams
 
 This repository contains Mermaid diagrams. If you want them to render in VS Code, we recommend installing the `Markdown Preview Mermaid Support` extension:
@@ -54,44 +52,23 @@ This repository contains Mermaid diagrams. If you want them to render in VS Code
 - [Install in VS Code](vscode:extension/bierner.markdown-mermaid)
 - [View on Marketplace](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid)
 
-### Requirements
+## Environment
 
-You will need **Docker Desktop** installed and running on your machine. Docker Compose is not required for this project. If you do not have Docker Desktop installed yet, follow the instructions on the official website:
+Please make sure you **use this repository as a template** and set up a new virtual environment. You can use the following commands:
 
-- [Mac](https://docs.docker.com/desktop/install/mac-install/)
-- [Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
-
-**DBeaver** is optional, but recommended if you want a GUI for exploring the database. If you do not have it installed, follow the instructions on the [official website](https://dbeaver.io/download/) or use:
-
-#### **`macOS`**
-
-```bash
-brew install --cask dbeaver-community
-```
-
-#### **`Windows`**
-
-```PowerShell
-choco install dbeaver
-```
-
-### Environment
-
-Create a local virtual environment before opening the notebooks.
-
-#### **`macOS`**
+### **`macOS`**
 
 ```bash
 pyenv local 3.11.3
 python -m venv .venv
 source .venv/bin/activate
-pip install -U pip
-pip install -r requirements.txt
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 ```
 
-#### **`Windows`**
+### **`Windows`**
 
-For `PowerShell` CLI :
+For `PowerShell` CLI:
 
 ```PowerShell
 pyenv local 3.11.3
@@ -101,7 +78,7 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-For `Git-Bash` CLI :
+For `Git-Bash` CLI:
 
 ```bash
 pyenv local 3.11.3
@@ -110,3 +87,28 @@ source .venv/Scripts/activate
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
+
+The [requirements.txt](requirements.txt) file contains all libraries and dependencies needed to execute the notebooks.
+
+## Setup
+
+- You will need **Docker Desktop** installed and running on your machine. If you do not have it installed, please follow the installation instructions [**here**](https://docs.docker.com/get-docker/).
+
+- **DBeaver** is optional, but recommended if you want a GUI for exploring the database. If you do not have it installed, please follow the installation instructions [**here**](https://dbeaver.io/download/), or use:
+
+    ### **`macOS`**
+
+    ```bash
+    brew install --cask dbeaver-community
+    ```
+
+    ### **`Windows`**
+
+    ```PowerShell
+    choco install dbeaver
+    ```
+
+## Learning Objectives
+
+By the end of this repository, you should be able to:
+
