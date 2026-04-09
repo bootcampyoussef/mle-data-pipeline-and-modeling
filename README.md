@@ -112,3 +112,8 @@ choco install dbeaver
 
 By the end of this repository, you should be able to:
 
+- start and verify a local PostgreSQL database with Docker
+- load parquet data into PostgreSQL with a small Python ETL pipeline
+- validate raw data loads with SQL and pandas
+- explain the difference between normalized and dimensional data models
+- build and query a simple star schema for analytics
