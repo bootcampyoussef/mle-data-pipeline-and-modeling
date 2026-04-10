@@ -129,6 +129,7 @@ This opens the `psql` command-line client inside the running container and conne
 | `\l` | List all databases |
 | `\c ny_taxi` | Reconnect to the `ny_taxi` database if needed |
 | `\dt` | List tables in the current database |
+| `\q` | Exit client |
 
 At this point, `\dt` may be empty, which is expected. The tables are created later when you load data.
 

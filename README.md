@@ -9,7 +9,7 @@ This repository is a small hands-on course in three steps:
 By the end, you will have:
 
 - a local PostgreSQL database running in Docker
-- the January 2025 NYC yellow taxi dataset loaded into PostgreSQL
+- the January 2025 NYC Yellow Taxi dataset loaded into PostgreSQL
 - a simple star schema built on top of the raw table
 - practice writing analytical SQL against both the raw and modeled data
 
@@ -112,8 +112,8 @@ choco install dbeaver
 
 By the end of this repository, you should be able to:
 
-- start and verify a local PostgreSQL database with Docker
-- load parquet data into PostgreSQL with a small Python ETL pipeline
-- validate raw data loads with SQL and pandas
-- explain the difference between normalized and dimensional data models
-- build and query a simple star schema for analytics
+- Start and verify a local PostgreSQL database with Docker.
+- Load parquet data into PostgreSQL with a small Python ETL pipeline.
+- Validate raw data loads with SQL and pandas.
+- Explain the difference between normalized and dimensional data models.
+- Build and query a simple star schema for analytics.
