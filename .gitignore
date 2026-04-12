@@ -127,3 +127,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Local PostgreSQL volume data
+db-data/
+
+# Generated Parquet files
+*.parquet*
+
+# MacOS files
+.DS_Store
