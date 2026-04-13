@@ -92,9 +92,9 @@ The [requirements.txt](requirements.txt) file contains all libraries and depende
 
 ## Setup
 
-- You will need **Docker Desktop** installed and running on your machine. If you do not have it installed, please follow the installation instructions [**here**](https://docs.docker.com/get-docker/).
+- You will need **Docker Desktop** installed and running on your machine. If you do not have it installed, please follow the [installation instructions](https://docs.docker.com/get-docker/).
 
-- **DBeaver** is optional, but recommended if you want a GUI for exploring the database. If you do not have it installed, please follow the installation instructions [**here**](https://dbeaver.io/download/), or use:
+- **DBeaver** is optional, but recommended if you want a GUI for exploring the database. If you do not have it installed, please follow the [installation instructions](https://dbeaver.io/download/), or use:
 
 ### **`macOS`**
 
