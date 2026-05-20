@@ -45,13 +45,6 @@ You are done with step 3 when:
 - `fact_trip` has the same number of rows as `yellow_taxi`
 - you can answer the notebook exercises with the modeled tables
 
-## Mermaid Diagrams
-
-This repository contains Mermaid diagrams. If you want them to render in VS Code, we recommend installing the `Markdown Preview Mermaid Support` extension:
-
-- [Install in VS Code](vscode:extension/bierner.markdown-mermaid)
-- [View on Marketplace](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid)
-
 ## Environment
 
 Please make sure you **use this repository as a template** and set up a new virtual environment. You can use the following commands:
