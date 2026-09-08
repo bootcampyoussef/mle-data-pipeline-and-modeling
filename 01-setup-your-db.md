@@ -143,12 +143,12 @@ Success looks like this:
 
 These are the values used throughout the rest of the project:
 
-- host from your machine: `localhost`
-- host from another container: `ny-taxi-db`
-- port: `5432`
-- database: `ny_taxi`
-- user: `postgres`
-- password: `postgres`
+- Host from your machine: `localhost`
+- Host from another container: `ny-taxi-db`
+- Port: `5432`
+- Database: `ny_taxi`
+- User: `postgres`
+- Password: `postgres`
 
 The notebook in the next step uses this connection string:
 
