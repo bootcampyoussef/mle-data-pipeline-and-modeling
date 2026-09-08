@@ -38,13 +38,13 @@ Before you begin, make sure you have the following installed:
 - **Docker Desktop**: required to run the local PostgreSQL database used throughout this course. Follow the [installation instructions](https://docs.docker.com/get-docker/) if you do not have it yet. Make sure it is **installed and running** before you start with the exercises.
 - **DBeaver** (optional): a GUI client for exploring the PostgreSQL database. Follow the [installation instructions](https://dbeaver.io/download/), or install it with the commands below.
 
-    **`macOS`**
+  **`macOS`**
 
     ```bash
     brew install --cask dbeaver-community
     ```
 
-    **`Windows`**
+  **`Windows`**
 
     ```powershell
     choco install dbeaver
