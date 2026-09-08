@@ -11,12 +11,12 @@ def download_file(url: str, file_path: Path) -> Path:
     file_path.parent.mkdir(parents=True, exist_ok=True)
 
     if file_path.exists():
-        click.echo(f"Reusing existing parquet file at {file_path}")
+        click.echo(f"Reusing existing Parquet file at {file_path}")
         return file_path
 
-    click.echo(f"Downloading parquet data from {url}")
+    click.echo(f"Downloading Parquet data from {url}")
     urlretrieve(url, file_path)
-    click.echo(f"Saved parquet file to {file_path}")
+    click.echo(f"Saved Parquet file to {file_path}")
     return file_path
 
 
@@ -67,11 +67,11 @@ def load_parquet_to_postgres(
 @click.option("--host", default="localhost", help="Postgres host name.")
 @click.option("--port", default=5432, help="Postgres port number.")
 @click.option("--table_name", default="yellow_taxi", help="Table name to write to.")
-@click.option("--url", help="URL to download parquet file from.")
-@click.option("--file_path", help="Path to save parquet file to.")
+@click.option("--url", help="URL to download Parquet file from.")
+@click.option("--file_path", help="Path to save Parquet file to.")
 @click.option("--db", default="ny_taxi", help="Database name to write to.")
 def data_ingestion(table_name, url, file_path, user, password, host, port, db):
-    """Download a parquet file and load it into PostgreSQL in chunks."""
+    """Download a Parquet file and load it into PostgreSQL in chunks."""
 
     if not url:
         raise click.UsageError("--url is required")

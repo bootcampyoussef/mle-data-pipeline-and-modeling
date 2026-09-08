@@ -2,9 +2,9 @@
 
 This step starts a local PostgreSQL database in Docker for the rest of the project. After it is running:
 
-- notebooks on your machine will connect to `localhost:5432`
-- other containers on the same Docker network will connect to `ny-taxi-db:5432`
-- the database name will be `ny_taxi`
+- notebooks on your machine will connect to `localhost:5432`,
+- other containers on the same Docker network will connect to `ny-taxi-db:5432`,
+- the database name will be `ny_taxi`.
 
 ```mermaid
 flowchart LR
@@ -44,7 +44,7 @@ If Docker prints `network with name ny-taxi already exists`, that is fine. It ju
 Success looks like this:
 
 - Docker returns a network ID, or
-- Docker tells you the network already exists
+- Docker tells you the network already exists.
 
 Either outcome means you can move on.
 
@@ -58,8 +58,8 @@ This folder stores the PostgreSQL data files on your machine. By mounting it int
 
 Success looks like this:
 
-- the `db-data/` folder exists in the repository root
-- rerunning the command does nothing harmful
+- the `db-data/` folder exists in the repository root,
+- rerunning the command does nothing harmful.
 
 ## Step 3: Start PostgreSQL
 
@@ -77,21 +77,21 @@ docker run -d \
 
 What each part does:
 
-- `-d` runs the container in the background
-- `--name ny-taxi-db` gives the container a stable name other Docker containers can use
-- `--network ny-taxi` attaches the container to the network you created in step 1
-- `POSTGRES_USER`, `POSTGRES_PASSWORD`, and `POSTGRES_DB` create the initial login and database
-- `-v "$(pwd)/db-data:/var/lib/postgresql/data"` stores database files in the local `db-data` folder
-- `-p 5432:5432` publishes PostgreSQL to your machine so notebooks can connect through `localhost:5432`
-- `postgres:17` is the official PostgreSQL image
+- `-d` runs the container in the background.
+- `--name ny-taxi-db` gives the container a stable name other Docker containers can use.
+- `--network ny-taxi` attaches the container to the network you created in step 1.
+- `POSTGRES_USER`, `POSTGRES_PASSWORD`, and `POSTGRES_DB` create the initial login and database.
+- `-v "$(pwd)/db-data:/var/lib/postgresql/data"` stores database files in the local `db-data` folder.
+- `-p 5432:5432` publishes PostgreSQL to your machine so notebooks can connect through `localhost:5432`.
+- `postgres:17` is the official PostgreSQL image.
 
 Use `localhost` when you connect from your laptop, Jupyter, or DBeaver. Use `ny-taxi-db` when you connect from another container on the `ny-taxi` network.
 
 Success looks like this:
 
-- Docker prints a container ID
-- `docker ps` shows a container named `ny-taxi-db`
-- the container keeps running instead of exiting immediately
+- Docker prints a container ID,
+- `docker ps` shows a container named `ny-taxi-db`,
+- the container keeps running instead of exiting immediately.
 
 ## Step 4: Verify that the container is running
 
@@ -107,12 +107,12 @@ If you do not see the container yet, inspect the logs:
 docker logs ny-taxi-db
 ```
 
-PostgreSQL is ready when the logs show that the database system is ready to accept connections.
+PostgreSQL is ready when the logs show `database system is ready to accept connections`.
 
 Success looks like this:
 
-- `docker ps --filter "name=ny-taxi-db"` returns one running container
-- the logs mention that PostgreSQL is ready to accept connections
+- `docker ps --filter "name=ny-taxi-db"` returns one running container,
+- the logs mention that PostgreSQL is ready to accept connections.
 
 ## Step 5: Connect with `psql`
 
@@ -135,20 +135,20 @@ At this point, `\dt` may be empty, which is expected. The tables are created lat
 
 Success looks like this:
 
-- your terminal prompt changes to `ny_taxi=#` or similar
-- `\l` lists databases
-- `\dt` runs without an error, even if it shows no tables yet
+- your terminal prompt changes to `ny_taxi=#` or similar,
+- `\l` lists databases,
+- `\dt` runs without an error, even if it shows no tables yet.
 
 ## Connection details for the next steps
 
 These are the values used throughout the rest of the project:
 
-- host from your machine: `localhost`
-- host from another container: `ny-taxi-db`
-- port: `5432`
-- database: `ny_taxi`
-- user: `postgres`
-- password: `postgres`
+- Host from your machine: `localhost`
+- Host from another container: `ny-taxi-db`
+- Port: `5432`
+- Database: `ny_taxi`
+- User: `postgres`
+- Password: `postgres`
 
 The notebook in the next step uses this connection string:
 
