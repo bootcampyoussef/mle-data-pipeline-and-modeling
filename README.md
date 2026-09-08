@@ -16,7 +16,7 @@ By the end of this repository, you should be able to:
 
 | File / Folder | Description |
 |---|---|
-| [**01 - Setup Your DB**](01-setup-your-db.md) | Start PostgreSQL in Docker and verify you can connect to it. |
+| [**01 - Setup Your Database**](01-setup-your-db.md) | Start PostgreSQL in Docker and verify you can connect to it. |
 | [**02 - Load Data**](02-load-data.ipynb) | Download the Yellow Taxi Parquet file and load it into PostgreSQL. |
 | [**03 - Data Modeling**](03-data-modeling.ipynb) | Remodel the raw table into a star schema and query it. |
 
@@ -38,13 +38,13 @@ Before you begin, make sure you have the following installed:
 - **Docker Desktop**: required to run the local PostgreSQL database used throughout this course. Follow the [installation instructions](https://docs.docker.com/get-docker/) if you do not have it yet. Make sure it is **installed and running** before you start with the exercises.
 - **DBeaver** (optional): a GUI client for exploring the PostgreSQL database. Follow the [installation instructions](https://dbeaver.io/download/), or install it with the commands below.
 
-    ### macOS
+    **`macOS`**
 
     ```bash
     brew install --cask dbeaver-community
     ```
 
-    ### Windows
+    **`Windows`**
 
     ```powershell
     choco install dbeaver
